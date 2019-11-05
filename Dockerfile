@@ -1,5 +1,6 @@
-FROM gradle:5.4.1-alpine
-LABEL maintainer="\"Juan Ara\" <juan@juanylaura.es>"
+FROM gradle:5.6.2-jdk11
+
+LABEL maintainer="\"Juan Ara\" <bofh@juanylaura.es>"
 
 USER root
 
