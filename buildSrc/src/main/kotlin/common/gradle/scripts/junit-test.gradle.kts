@@ -13,7 +13,7 @@ val `junit-platform`:String by extra
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:$junit")
     testImplementation("org.junit.jupiter:junit-jupiter-params:$junit")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher:${`junit-platform`}")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher:$`junit-platform`")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junit")
 }
 
