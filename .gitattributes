@@ -1,0 +1,6 @@
+*.java text eol=lf
+*.kt text eol=lf
+*.kts text eol=lf
+*.resources eol=lf
+*.properties eol=lf
+Dockerfile eol=lf
