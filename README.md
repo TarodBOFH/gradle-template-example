@@ -17,7 +17,7 @@ Features:
 - sample `init.gradle.kts` properties
 - Some logging information added to several tasks, like version and properties output on `compileJava`, `compileKotlin`
 - More logging information added to test, like logging version of the libraries included
-- Different flavour per module (i.e. java module uses `hamcrest` and mockito while kotlin uses assertj and mockk
+- Different flavour per module (i.e. java module uses `assertj` and mockito while kotlin uses assertj and mockk
 - Modules dependencies: `kotlin` module depends on `java` module by `implementation` flavour
 - Gradle Wrapper included in the sources
 - Gradle wrapper task example on root `build.gradle.kts`
@@ -33,3 +33,15 @@ plugins {
 }
 ```
 Then it will be available (loaded) for modules. This might improve your build times if your plugins are shared accross modules.
+
+## How is it done?
+
+Convention over Configuration.
+
+The template offers a hook, versions.gradle.kts, sitting on buildSrc (that includes the default versions).
+It also loads versions.gradle.kts sitting on root project to override the versions in buildSrc. The whole idea is to 
+allow a company package buildSrc in either a git subtree, or a custom gradle distribution (see https://docs.gradle.org/current/userguide/organizing_gradle_projects.html#sec:custom_gradle_distribution)
+to  embed a custom buildSrc for or the company builds.
+
+Also, modules can override their properties either by adding a `buildscript` with a `apply(from = "")` block to override
+some default versions. In the examples provided, the `java` submodule is overriding jvm target as an example.
