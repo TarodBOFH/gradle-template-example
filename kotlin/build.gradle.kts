@@ -6,5 +6,4 @@ plugins {
 
 dependencies {
     implementation(project(":java"))
-    testImplementation("io.mockk:mockk:1.9.3")
 }
