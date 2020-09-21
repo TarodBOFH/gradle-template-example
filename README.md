@@ -38,10 +38,18 @@ Then it will be available (loaded) for modules. This might improve your build ti
 
 Convention over Configuration.
 
-The template offers a hook, versions.gradle.kts, sitting on buildSrc (that includes the default versions).
-It also loads versions.gradle.kts sitting on root project to override the versions in buildSrc. The whole idea is to 
-allow a company package buildSrc in either a git subtree, or a custom gradle distribution (see https://docs.gradle.org/current/userguide/organizing_gradle_projects.html#sec:custom_gradle_distribution)
-to  embed a custom buildSrc for or the company builds.
+The template offers a hook, `versions.gradle.kts`, sitting on `buildSrc` (that includes the default versions).
+It also loads `versions.gradle.kts` sitting on root project to override the versions in `buildSrc`. The whole idea is to 
+allow a company package `buildSrc` in either a git subtree, or a custom gradle distribution (see https://docs.gradle.org/current/userguide/organizing_gradle_projects.html#sec:custom_gradle_distribution)
+to  embed a custom `buildSrc` for the company builds.
 
-Also, modules can override their properties either by adding a `buildscript` with a `apply(from = "")` block to override
-some default versions. In the examples provided, the `java` submodule is overriding jvm target as an example.
+Also, modules can override their properties either by adding a `buildscript` with a `apply(from = "<local.versions.file>")` 
+block to override some default versions. In the examples provided, the `java` submodule is overriding jvm target.
+
+## Dummy Tests
+Dummy tests exist to force the test task failure.
+
+## Single Module projects
+- Remove `java` and `kotlin` modules
+- Add default `src` at `projectRoot` folder with the standard convention: `$projectRoot/src/{main, test}/{java, kotlin}`
+- Edit `settings.gradle.kts` and remove the `include` section
