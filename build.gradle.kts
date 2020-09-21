@@ -1,6 +1,6 @@
 plugins {
-    id("common.gradle.scripts.idea")
     id("common.gradle.scripts.versions")
+    id("common.gradle.scripts.idea")
 }
 
 allprojects {
