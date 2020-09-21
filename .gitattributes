@@ -4,3 +4,5 @@
 *.resources eol=lf
 *.properties eol=lf
 Dockerfile eol=lf
+docker-compose.yml  eol=lf
+*.docker  eol=lf
