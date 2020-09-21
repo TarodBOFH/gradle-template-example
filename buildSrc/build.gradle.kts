@@ -3,22 +3,19 @@ buildscript {
 }
 
 val kotlinVersion: String by extra
+val spotlessPlugin: String by extra
 
 plugins {
     `kotlin-dsl`
-    `kotlin-dsl-precompiled-script-plugins`
 }
 
 repositories {
-    jcenter()
-    mavenCentral()
-    maven {
-        url = uri("https://plugins.gradle.org/m2/")
-    }
+    gradlePluginPortal()
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
-    implementation("org.jmailen.gradle:kotlinter-gradle:2.1.2")
-    implementation("com.diffplug.spotless:spotless-plugin-gradle:3.25.0")
+    //implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10") // be careful with https://youtrack.jetbrains.com/issue/KT-41142
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion") // be careful with https://youtrack.jetbrains.com/issue/KT-41142
+    @Suppress("SpellCheckingInspection")
+    implementation("com.diffplug.spotless:spotless-plugin-gradle:$spotlessPlugin")
 }

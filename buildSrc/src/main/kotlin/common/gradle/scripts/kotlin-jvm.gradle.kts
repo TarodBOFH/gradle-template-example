@@ -1,5 +1,7 @@
 package common.gradle.scripts
 
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     kotlin("jvm")
     id("common.gradle.scripts.java")
@@ -7,20 +9,18 @@ plugins {
 
 repositories {
     mavenCentral()
-}
-
-dependencies {
-    implementation(kotlin("stdlib-jdk8"))
+    jcenter()
 }
 
 val javaTarget: String by extra
 val kotlinTarget: String by extra
+val kotlinVersion: String by extra
 
-tasks.compileKotlin {
+tasks.withType<KotlinCompile>().configureEach {
     kotlinOptions {
         languageVersion = kotlinTarget
         apiVersion = kotlinTarget
-        jvmTarget = javaTarget
+        jvmTarget = JavaVersion.toVersion(javaTarget).toString()
         javaParameters = true
     }
     doFirst {
@@ -28,9 +28,8 @@ tasks.compileKotlin {
     }
 }
 
-java {
-    sourceCompatibility = JavaVersion.toVersion(javaTarget)
-    targetCompatibility = JavaVersion.toVersion(javaTarget)
+dependencies {
+    implementation(kotlin("stdlib-jdk8"))
 }
 
 tasks.create("printKotlinOptions") {

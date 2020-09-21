@@ -4,14 +4,13 @@ plugins {
     id("common.gradle.scripts.junit-test")
 }
 
-val hamcrest: String by extra
+val assertj: String by extra
 
 dependencies {
-    testImplementation("org.hamcrest:hamcrest:$hamcrest")
-}
+    testImplementation("org.assertj:assertj-core:$assertj")}
 
 tasks.test {
     doFirst {
-        logger.lifecycle("Hamcrest version $hamcrest")
+        logger.lifecycle("Assertj version $assertj")
     }
 }

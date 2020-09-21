@@ -5,14 +5,22 @@ plugins {
     id("common.gradle.scripts.junit-test")
 }
 
-val assertj:String by extra
+val mockk: String by extra
+val assertk: String by extra
 
 dependencies {
-    testImplementation("org.assertj:assertj-core:$assertj")
+    testImplementation(kotlin("test-common"))
+    testImplementation(kotlin("test-annotations-common"))
+    testImplementation(kotlin("test-junit5"))
+    testImplementation("io.mockk:mockk:$mockk")
+    @Suppress("SpellCheckingInspection")
+    testImplementation("com.willowtreeapps.assertk:assertk-jvm:$assertk")
+
 }
 
 tasks.test {
     doFirst {
-        logger.lifecycle("Assertj version $assertj")
+        logger.lifecycle("Assertk version $assertk")
+        logger.lifecycle("Mockk version $mockk")
     }
 }

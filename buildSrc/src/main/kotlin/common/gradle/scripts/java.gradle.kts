@@ -15,8 +15,9 @@ java {
     targetCompatibility = JavaVersion.toVersion(javaTarget)
 }
 
-tasks.compileJava {
+tasks.withType<JavaCompile>().configureEach {
     options.compilerArgs.add("-parameters")
+    @Suppress("SpellCheckingInspection")
     options.compilerArgs.add("-Xlint:unchecked")
     options.isDeprecation = true
 
@@ -37,6 +38,7 @@ fun printJavaOptions() {
         logger.lifecycle("Java options:")
         logger.lifecycle("\tLanguage Version $sourceCompatibility")
         logger.lifecycle("\tJVM Target $targetCompatibility")
+        @Suppress("UnstableApiUsage")
         logger.lifecycle("\tJDK Version ${toolChain.version}")
         logger.lifecycle("\tCompiler Args ${options.compilerArgs}")
     }
