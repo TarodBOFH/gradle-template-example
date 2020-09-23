@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     kotlin("jvm")
-    id("common.gradle.scripts.java")
+    kotlin("kapt")
 }
 
 repositories {
@@ -12,15 +12,20 @@ repositories {
     jcenter()
 }
 
-val javaTarget: String by extra
-val kotlinTarget: String by extra
-val kotlinVersion: String by extra
+@Suppress("PropertyName")
+val `java-target`: String by extra
+@Suppress("PropertyName")
+val `kotlin-target`: String by extra
+@Suppress("PropertyName")
+val `kotlin-version`: String by extra
+@Suppress("PropertyName")
+val `kotlin-logging-version`: String by extra
 
 tasks.withType<KotlinCompile>().configureEach {
     kotlinOptions {
-        languageVersion = kotlinTarget
-        apiVersion = kotlinTarget
-        jvmTarget = JavaVersion.toVersion(javaTarget).toString()
+        languageVersion = `kotlin-target`
+        apiVersion = `kotlin-target`
+        jvmTarget = JavaVersion.toVersion(`java-target`).toString()
         javaParameters = true
     }
     doFirst {
@@ -30,6 +35,8 @@ tasks.withType<KotlinCompile>().configureEach {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
+    @Suppress("SpellCheckingInspection")
+    implementation("io.github.microutils:kotlin-logging:${`kotlin-logging-version`}")
 }
 
 tasks.create("printKotlinOptions") {
@@ -49,5 +56,7 @@ fun printKotlinOptions() {
         logger.lifecycle("\tJDK Home ${kotlinOptions.jdkHome}")
         logger.lifecycle("\tFree Compiler Args ${kotlinOptions.freeCompilerArgs}")
         logger.lifecycle("\tEmbedded Kotlin $embeddedKotlinVersion")
+        logger.lifecycle("Kotlin Library Versions:")
+        logger.lifecycle("\tKotlin Logging $`kotlin-logging-version`")
     }
 }

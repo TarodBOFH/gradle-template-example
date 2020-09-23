@@ -1,9 +1,12 @@
+@file:Suppress("PropertyName", "SpellCheckingInspection")
+
 buildscript {
     apply (from = "versions.gradle.kts")
 }
 
-val kotlinVersion: String by extra
-val spotlessPlugin: String by extra
+val `kotlin-version`: String by extra
+val `spotless-plugin-version`: String by extra
+val `springboot-version`: String by extra
 
 plugins {
     `kotlin-dsl`
@@ -15,7 +18,8 @@ repositories {
 
 dependencies {
     //implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.10") // be careful with https://youtrack.jetbrains.com/issue/KT-41142
-    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion") // be careful with https://youtrack.jetbrains.com/issue/KT-41142
-    @Suppress("SpellCheckingInspection")
-    implementation("com.diffplug.spotless:spotless-plugin-gradle:$spotlessPlugin")
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:${`kotlin-version`}") // be careful with https://youtrack.jetbrains.com/issue/KT-41142
+    implementation("org.jetbrains.kotlin:kotlin-allopen:${`kotlin-version`}")
+    implementation("org.springframework.boot:spring-boot-gradle-plugin:${`springboot-version`}")
+    implementation("com.diffplug.spotless:spotless-plugin-gradle:${`spotless-plugin-version`}")
 }

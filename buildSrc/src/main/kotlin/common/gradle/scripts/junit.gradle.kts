@@ -6,10 +6,11 @@ plugins {
     id("common.gradle.scripts.java")
 }
 
-val junit: String by extra
+@Suppress("PropertyName")
+val `junit-version`: String by extra
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:$junit"))
+    testImplementation(platform("org.junit:junit-bom:${`junit-version`}"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("org.junit.jupiter:junit-jupiter-params")
 }
@@ -32,13 +33,13 @@ tasks.test {
     }
 
     doFirst {
-        logger.lifecycle("junit version $junit")
+        logger.lifecycle("junit version $`junit-version`")
     }
 }
 
 // JUnit's cleanTest task doesn't have an accessor on tasks nor provides a description
 // See Gradle best practices at "https://docs.gradle.org/current/userguide/authoring_maintainable_build_scripts.html#sec:declaring_tasks"
-tasks.named("cleanTest")  {
+tasks.named("cleanTest") {
     group = "verification"
     description = "Cleans test result cache, so new test invocations won't be marked as \"UP-TO-DATE\""
 }

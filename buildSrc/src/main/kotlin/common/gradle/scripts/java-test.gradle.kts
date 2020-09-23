@@ -1,16 +1,19 @@
 package common.gradle.scripts
 
 plugins {
-    id("common.gradle.scripts.junit-test")
+    id("common.gradle.scripts.java")
+    id("common.gradle.scripts.junit")
 }
 
-val assertj: String by extra
+@Suppress("PropertyName")
+val `assertj-version`: String by extra
 
 dependencies {
-    testImplementation("org.assertj:assertj-core:$assertj")}
+    testImplementation("org.assertj:assertj-core:${`assertj-version`}")
+}
 
 tasks.test {
     doFirst {
-        logger.lifecycle("Assertj version $assertj")
+        logger.lifecycle("Assertj version $`assertj-version`")
     }
 }

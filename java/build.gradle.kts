@@ -1,5 +1,5 @@
 buildscript {
-    extra["javaTarget"] = "1.8" //overrides rootProject
+    extra["java-target"] = "1.8" //overrides rootProject
 }
 
 plugins {

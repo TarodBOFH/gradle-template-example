@@ -8,11 +8,12 @@ repositories {
     mavenCentral()
 }
 
-val javaTarget: String by extra
+@Suppress("PropertyName")
+val `java-target`: String by extra
 
 java {
-    sourceCompatibility = JavaVersion.toVersion(javaTarget)
-    targetCompatibility = JavaVersion.toVersion(javaTarget)
+    sourceCompatibility = JavaVersion.toVersion(`java-target`)
+    targetCompatibility = JavaVersion.toVersion(`java-target`)
 }
 
 tasks.withType<JavaCompile>().configureEach {

@@ -6,7 +6,8 @@ plugins {
     idea
 }
 
-val javaTarget: String by extra
+@Suppress("PropertyName")
+val `java-target`: String by extra
 
 idea {
     module {
@@ -14,7 +15,7 @@ idea {
         isDownloadSources = true
     }
     project {
-        jdkName = javaTarget
-        languageLevel = IdeaLanguageLevel(JavaVersion.toVersion(javaTarget))
+        jdkName = `java-target`
+        languageLevel = IdeaLanguageLevel(JavaVersion.toVersion(`java-target`))
     }
 }
