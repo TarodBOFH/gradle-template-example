@@ -1,4 +1,4 @@
-# gradle-template
+# gradle-template-example
 Advanced gradle template using Kotlin DSL
 
 ## Introduction
@@ -12,6 +12,7 @@ Features:
 - Preconfigured `kotlin-jvm` and `kotlin-test` plugin scripts, with spotless and klint (java plugin scripts doesn't have any linter)
 - Preconfigured junit 5 script plugin with test summary output
 - Preconfigured basic `idea` plugin
+- Preconfigured springboot plugin and libraries with exclusions
 - `.gitignore` template 
 - `.gitattributes` template
 - sample `init.gradle.kts` properties
