@@ -5,7 +5,7 @@ Advanced gradle template using Kotlin DSL
 This is an advanced gradle kotlin project template using gradle's kotlin DSL
 
 Features: 
-- Multimodule setup
+- Multimodule setup: Modules reside in `modules` folder. Please refer to `settings.gradle.kts` for further information
 - `buildSrc` plugin scripts to be imported like the old groovy `apply from` format
 - Extra properties as an example, as global `versions.gradle.kts` on `buildSrc`, overriden on the rootProject and then overriden per module on `buildscript {}` block
 - Preconfigured `java` and `java-test` plugin scripts
