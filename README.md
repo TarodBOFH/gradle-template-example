@@ -7,7 +7,8 @@ This is an advanced gradle kotlin project template using gradle's kotlin DSL
 Features: 
 - Multimodule setup: Modules reside in `modules` folder. Please refer to `settings.gradle.kts` for further information
 - `buildSrc` plugin scripts to be imported like the old groovy `apply from` format
-- Extra properties as an example, as global `versions.gradle.kts` on `buildSrc`, overriden on the rootProject and then overriden per module on `buildscript {}` block
+- Extra properties as an example, as global `versions.gradle.kts` on `buildSrc`, overridden on the rootProject and then 
+  overridden per module on `buildscript {}` block
 - Preconfigured `java` and `java-test` plugin scripts
 - Preconfigured `kotlin-jvm` and `kotlin-test` plugin scripts, with spotless and klint (java plugin scripts doesn't have any linter)
 - Preconfigured junit 5 script plugin with test summary output
@@ -23,25 +24,32 @@ Features:
 - Gradle Wrapper included in the sources
 - Gradle wrapper task example on root `build.gradle.kts`
 
-This template is offered as it is as a learning resource or as a starting point to override and customize to everyone's needs.
-Some of the design choices made are an intentional exageration to ilustrate with examples what can be done. Please review before using this on production and tailor it to your needs.
+This template is offered as it is as a learning resource or as a starting point to override and customize to everyone's 
+needs.
+Some design choices made are an intentional exaggeration to illustrate with examples what can be done.
+Please review before using this on production and tailor it to your needs.
 
-Please bear in mind that gradle recommends to apply plugins on root project buildscript but that recommendation has been ignored on this template. The reasoning behind this is to make every buildscript minimal. If your buildscripts require the same plugin, please add it to the root buildscript as per gradle recommendations. See https://docs.gradle.org/current/userguide/kotlin_dsl.html#sec:multi_project_builds_applying_plugins for additional information:
+Please bear in mind that gradle recommends applying plugins on root project buildscript but that recommendation has been 
+ignored on this template. The reasoning behind this is to make every buildscript minimal. 
+If your buildscripts require the same plugin, please add it to the root buildscript as per gradle recommendations. 
+See https://docs.gradle.org/current/userguide/kotlin_dsl.html#sec:multi_project_builds_applying_plugins for additional information:
 For example, to load `common.gradle.scripts.java` plugin on root buildscript but don't apply it:
 ```
 plugins {
     id("common.gradle.scripts.java") false
 }
 ```
-Then it will be available (loaded) for modules. This might improve your build times if your plugins are shared accross modules.
+Then it will be available (loaded) for modules. This might improve your build times if your plugins are shared across 
+modules.
 
 ## How is it done?
 
 Convention over Configuration.
 
 The template offers a hook, `versions.gradle.kts`, sitting on `buildSrc` (that includes the default versions).
-It also loads `versions.gradle.kts` sitting on root project to override the versions in `buildSrc`. The whole idea is to 
-allow a company package `buildSrc` in either a git subtree, or a custom gradle distribution (see https://docs.gradle.org/current/userguide/organizing_gradle_projects.html#sec:custom_gradle_distribution)
+It also loads `versions.gradle.kts` sitting on root project to override the versions in `buildSrc`.
+The whole idea is to allow a company package `buildSrc` in either a git subtree, 
+or a custom gradle distribution (see https://docs.gradle.org/current/userguide/organizing_gradle_projects.html#sec:custom_gradle_distribution)
 to  embed a custom `buildSrc` for the company builds.
 
 Also, modules can override their properties either by adding a `buildscript` with a `apply(from = "<local.versions.file>")` 
