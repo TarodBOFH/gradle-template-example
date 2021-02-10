@@ -13,7 +13,7 @@ Features:
 - Preconfigured `kotlin-jvm` and `kotlin-test` plugin scripts, with spotless and klint (java plugin scripts doesn't have any linter)
 - Preconfigured junit 5 script plugin with test summary output
 - Preconfigured basic `idea` plugin
-- Preconfigured springboot plugin and libraries with exclusions
+- Preconfigured springboot plugin and libraries with exclusions with a `spring` module with tracing, logging and so.
 - `.gitignore` template 
 - `.gitattributes` template
 - sample `init.gradle.kts` properties
@@ -62,6 +62,6 @@ and the `kotlin` module is overriding the version of kotlin logging library with
 Dummy tests exist to force the test task failure.
 
 ## Single Module projects
-- Remove `java` and `kotlin` modules
+- Remove `java`, `kotlin` and `spring` modules
 - Add default `src` at `projectRoot` folder with the standard convention: `$projectRoot/src/{main, test}/{java, kotlin}`
 - Edit `settings.gradle.kts` and remove the `include` section

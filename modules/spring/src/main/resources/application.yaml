@@ -1,0 +1,37 @@
+spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+      - org.springframework.boot.actuate.autoconfigure.security.servlet.ManagementWebSecurityAutoConfiguration
+  application:
+    name: ${module.name}
+  jackson:
+    deserialization:
+      FAIL_ON_NULL_FOR_PRIMITIVES: true
+server:
+  port: 9091
+logging:
+  level:
+    org.zalando.logbook: TRACE
+logbook:
+  format:
+    style: json
+  obfuscate:
+    headers:
+      - Authorization
+      - X-Secret
+    parameters:
+      - access_token
+      - password
+  write:
+    max-body-size: 4096
+  minimum-status: 200
+  strategy: status-at-least
+  exclude: /favicon.ico
+  filter:
+    form-request-mode: off
+    # see https://github.com/zalando/logbook/issues/701
+info:
+  application:
+    name: ${module.name}
+    version: ${version}

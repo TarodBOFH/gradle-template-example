@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active:
+      - test
+
+---
+logging:
+  level:
+    org.zalando.logbook: TRACE
+logbook:
+  format:
+    style: http
+  strategy: default
