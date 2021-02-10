@@ -36,7 +36,7 @@ tasks.withType<KotlinCompile>().configureEach {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     @Suppress("SpellCheckingInspection")
-    implementation("io.github.microutils:kotlin-logging:${`kotlin-logging-version`}")
+    implementation("io.github.microutils:kotlin-logging-jvm:${`kotlin-logging-version`}")
 }
 
 tasks.create("printKotlinOptions") {
@@ -49,6 +49,7 @@ tasks.create("printKotlinOptions") {
 fun printKotlinOptions() {
     tasks.compileKotlin.orNull?.apply {
         logger.lifecycle("Kotlin options:")
+        logger.lifecycle("\tRequested Kotlin Version $`kotlin-version`")
         logger.lifecycle("\tLanguage Version ${kotlinOptions.languageVersion}")
         logger.lifecycle("\tApi Version ${kotlinOptions.apiVersion}")
         logger.lifecycle("\tJava Parameters ${kotlinOptions.javaParameters}")

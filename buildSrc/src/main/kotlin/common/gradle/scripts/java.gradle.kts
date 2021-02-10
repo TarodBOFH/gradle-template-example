@@ -39,8 +39,7 @@ fun printJavaOptions() {
         logger.lifecycle("Java options:")
         logger.lifecycle("\tLanguage Version $sourceCompatibility")
         logger.lifecycle("\tJVM Target $targetCompatibility")
-        @Suppress("UnstableApiUsage")
-        logger.lifecycle("\tJDK Version ${toolChain.version}")
+        logger.lifecycle("\tJDK Version ${JavaVersion.current()}")
         logger.lifecycle("\tCompiler Args ${options.compilerArgs}")
     }
 }

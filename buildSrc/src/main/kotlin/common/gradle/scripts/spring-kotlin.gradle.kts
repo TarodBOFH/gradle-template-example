@@ -32,6 +32,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-autoconfigure")
     implementation("org.springframework.boot:spring-boot-actuator")
     implementation("org.springframework.boot:spring-boot-actuator-autoconfigure")
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     // Spring Cloud Artifacts
     implementation(platform("org.springframework.cloud:spring-cloud-dependencies:${`springcloud-version`}"))
