@@ -64,7 +64,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-devtools")
 }
 
-tasks.create("printSprintOptions") {
+tasks.create("printSpringOptions") {
     group = "other"
     doFirst {
         printSpringOptions()
@@ -75,7 +75,7 @@ fun printSpringOptions() {
     tasks.compileKotlin.orNull?.apply {
         logger.lifecycle("Spring options:")
         logger.lifecycle("\tSpringboot Version $`springboot-version`")
-        logger.lifecycle("\tSpringcloud Version $`springcloud-version``")
+        logger.lifecycle("\tSpringCloud Version $`springcloud-version``")
         logger.lifecycle("\thttpclient Version $`httpclient-version``")
         logger.lifecycle("\tlogbook Version $`logbook-version``")
     }
