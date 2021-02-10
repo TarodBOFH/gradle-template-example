@@ -52,8 +52,11 @@ The whole idea is to allow a company package `buildSrc` in either a git subtree,
 or a custom gradle distribution (see https://docs.gradle.org/current/userguide/organizing_gradle_projects.html#sec:custom_gradle_distribution)
 to  embed a custom `buildSrc` for the company builds.
 
-Also, modules can override their properties either by adding a `buildscript` with a `apply(from = "<local.versions.file>")` 
-block to override some default versions. In the examples provided, the `java` submodule is overriding jvm target.
+Also, modules can override their properties either by adding a `buildscript` block to override some default versions.
+Additionally, if the file `versions.gradle.kts` exists in the module root folder, it will overwrite the parent and
+`buildSrc` versions. 
+In the examples provided, the `java` submodule is overriding jvm target with a `buildscript` block 
+and the `kotlin` module is overriding the version of kotlin logging library with a `versions.gradle.kts` file.
 
 ## Dummy Tests
 Dummy tests exist to force the test task failure.
